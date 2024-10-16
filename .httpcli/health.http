@@ -1,0 +1,16 @@
+# @name health
+GET {{BASE_URL}}/health
+Content-Type: application/json
+
+{{
+    const { equal } = require('node:assert');
+    
+    test('status code 200', () => {
+        equal(response.statusCode, 200);
+    });
+
+    test('version is a string', () => {
+        const body = JSON.parse(response.body);
+        equal(typeof body.version, 'string', 'version should be a string');
+    });
+}}
