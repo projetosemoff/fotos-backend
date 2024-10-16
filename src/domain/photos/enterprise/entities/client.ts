@@ -1,59 +1,59 @@
-import { Entity } from "@/core/entities/entity";
-import { EntityID } from "@/core/entities/entity-id";
-import { Optional } from "@/core/types/optional";
+import { Entity } from '@/core/entities/entity'
+import { EntityID } from '@/core/entities/entity-id'
+import { Optional } from '@/core/types/optional'
 
 interface ClientProps {
-  name: string;
-  email?: string;
-  phoneNumber?: string;
-  createdAt: Date;
-  updatedAt?: Date;
-  inactivatedAt?: Date;
+  name: string
+  email?: string
+  phoneNumber?: string
+  createdAt: Date
+  updatedAt?: Date
+  inactivatedAt?: Date
 }
 
 export class Client extends Entity<ClientProps> {
   get name(): string {
-    return this.props.name;
+    return this.props.name
   }
 
   get email(): string | undefined {
-    return this.props.email;
+    return this.props.email
   }
 
   get phoneNumber(): string | undefined {
-    return this.props.phoneNumber;
+    return this.props.phoneNumber
   }
 
   get createdAt(): Date {
-    return this.props.createdAt;
+    return this.props.createdAt
   }
 
   get updatedAt(): Date | undefined {
-    return this.props.updatedAt;
+    return this.props.updatedAt
   }
 
   get inactivatedAt(): Date | undefined {
-    return this.props.inactivatedAt;
+    return this.props.inactivatedAt
   }
 
   set inactivatedAt(inactivatedAt: Date | undefined) {
-    this.props.inactivatedAt = inactivatedAt;
-    this.touch();
+    this.props.inactivatedAt = inactivatedAt
+    this.touch()
   }
 
   private touch() {
-    this.props.updatedAt = new Date();
+    this.props.updatedAt = new Date()
   }
 
-  static create(props: Optional<ClientProps, "createdAt">, id?: EntityID) {
+  static create(props: Optional<ClientProps, 'createdAt'>, id?: EntityID) {
     const client: Client = new Client(
       {
         ...props,
         createdAt: props.createdAt ?? new Date(),
       },
       id
-    );
+    )
 
-    return client;
+    return client
   }
 }

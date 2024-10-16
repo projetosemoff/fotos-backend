@@ -1,37 +1,37 @@
-import { Entity } from "@/core/entities/entity";
-import { EntityID } from "@/core/entities/entity-id";
-import { Optional } from "@/core/types/optional";
+import { Entity } from '@/core/entities/entity'
+import { EntityID } from '@/core/entities/entity-id'
+import { Optional } from '@/core/types/optional'
 
 interface ClientPhotographerProps {
-  photographerId: EntityID;
-  clientId: EntityID;
-  createdAt: Date;
-  inactivatedAt?: Date;
+  photographerId: EntityID
+  clientId: EntityID
+  createdAt: Date
+  inactivatedAt?: Date
 }
 
 export class ClientPhotographer extends Entity<ClientPhotographerProps> {
   get photographerId(): EntityID {
-    return this.props.photographerId;
+    return this.props.photographerId
   }
 
   get clientId(): EntityID {
-    return this.props.clientId;
+    return this.props.clientId
   }
 
   get createdAt(): Date {
-    return this.props.createdAt;
+    return this.props.createdAt
   }
 
   get inactivatedAt(): Date | undefined {
-    return this.props.inactivatedAt;
+    return this.props.inactivatedAt
   }
 
   set inactivatedAt(inactivatedAt: Date | undefined) {
-    this.props.inactivatedAt = inactivatedAt;
+    this.props.inactivatedAt = inactivatedAt
   }
 
   static create(
-    props: Optional<ClientPhotographerProps, "createdAt">,
+    props: Optional<ClientPhotographerProps, 'createdAt'>,
     id?: EntityID
   ) {
     const clientPhotographer: ClientPhotographer = new ClientPhotographer(
@@ -40,8 +40,8 @@ export class ClientPhotographer extends Entity<ClientPhotographerProps> {
         createdAt: props.createdAt ?? new Date(),
       },
       id
-    );
+    )
 
-    return clientPhotographer;
+    return clientPhotographer
   }
 }
