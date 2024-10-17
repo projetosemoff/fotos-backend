@@ -34,8 +34,6 @@ export class RegisterPhotographerController {
   async handle(@Body() body: RegisterPhotographerBodySchema) {
     const { name, email, password } = body
 
-    console.log(body)
-
     const result = await this.sut.execute({
       name,
       email,

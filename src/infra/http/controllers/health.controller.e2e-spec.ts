@@ -24,10 +24,15 @@ describe('Get health version (E2E)', () => {
   })
 
   test('[GET] /health', async () => {
-    const response = await request(app.getHttpServer()).get('/health').send()
+    const response = await app.inject({
+      method: 'GET',
+      url: '/health',
+    })
 
-    expect(response.statusCode).to.be.equal(200)
-    expect(response.body).to.have.property('version')
-    expect(response.body.version).to.be.a('string')
+    const responseBody = JSON.parse(response.payload)
+
+    expect(response.statusCode).toBe(200)
+    expect(responseBody).toHaveProperty('version')
+    expect(typeof responseBody.version).toBe('string')
   })
 })

@@ -5,7 +5,6 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify'
 import { Test } from '@nestjs/testing'
-import request from 'supertest'
 
 describe('Create Account (E2E)', () => {
   let app: NestFastifyApplication
@@ -27,10 +26,14 @@ describe('Create Account (E2E)', () => {
   })
 
   test('[POST] /register', async () => {
-    const response = await request(app.getHttpServer()).post('/register').send({
-      name: 'John Doe',
-      email: 'johndoe@example.com',
-      password: '123456',
+    const response = await app.inject({
+      method: 'POST',
+      url: '/register',
+      payload: {
+        name: 'John Doe',
+        email: 'johndoe@example.com',
+        password: '123456',
+      },
     })
 
     expect(response.statusCode).toBe(201)
