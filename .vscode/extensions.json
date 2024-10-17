@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "prisma.prisma",
+        "biomejs.biome",
+        "ms-azuretools.vscode-docker",
+        "pomdtr.excalidraw-editor",
+        "anweber.vscode-httpyac",
+        "vitest.explorer"
+    ]
+}
