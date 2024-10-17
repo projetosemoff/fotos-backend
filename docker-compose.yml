@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -10,9 +10,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: nest-backend-template
-      PGDATA: /data/postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - ./data/pg:/data/postgres
+      - pgdata:/var/lib/postgresql/data
 
   cache:
     container_name: nest-backend-template-cache
@@ -21,3 +21,6 @@ services:
       - 6379:6379
     volumes:
       - ./data/redis:/data
+
+volumes:
+  pgdata:
