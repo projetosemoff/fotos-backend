@@ -12,3 +12,15 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Photographer {
+  id            String    @id(map: "pk_photographer")
+  name          String    @db.VarChar(100)
+  email         String    @unique(map: "ui_photographer_001") @db.VarChar(250)
+  password      String    @db.VarChar(60)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime? @updatedAt @map("updated_at")
+  inactivatedAt DateTime? @map("inactivated_at")
+
+  @@map("photographer")
+}

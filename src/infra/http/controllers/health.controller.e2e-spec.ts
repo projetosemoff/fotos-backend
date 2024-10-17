@@ -1,10 +1,13 @@
-import { INestApplication } from '@nestjs/common'
 import { AppModule } from '@/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify'
 
 describe('Get health version (E2E)', () => {
-  let app: INestApplication
+  let app: NestFastifyApplication
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -12,9 +15,12 @@ describe('Get health version (E2E)', () => {
       providers: [],
     }).compile()
 
-    app = moduleRef.createNestApplication()
+    app = moduleRef.createNestApplication<NestFastifyApplication>(
+      new FastifyAdapter()
+    )
 
     await app.init()
+    await app.getHttpAdapter().getInstance().ready()
   })
 
   test('[GET] /health', async () => {

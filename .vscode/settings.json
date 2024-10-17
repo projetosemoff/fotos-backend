@@ -3,5 +3,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "explorer.compactFolders": false
+  "explorer.compactFolders": false,
+  "vitest.disableWorkspaceWarning": true
 }
