@@ -1,0 +1,11 @@
+@BASE_URL = http://localhost:3333
+
+# @name create_client
+POST {{BASE_URL}}/client
+Content-Type: application/json
+
+{
+  "name": "Nathan",
+  "email": "teste@gmail.com",
+  "phoneNumber": "99999999999"
+}

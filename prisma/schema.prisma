@@ -24,3 +24,15 @@ model Photographer {
 
   @@map("photographer")
 }
+
+model Client {
+  id            String    @id(map: "pk_client")
+  name          String    @db.VarChar(60)
+  email         String    @unique(map: "ui_client_001") @db.VarChar(250)
+  phoneNumber   String    @map("phone_number") @db.VarChar(12)
+  createdAt     DateTime? @default(now()) @map("created_at")
+  updatedAt     DateTime? @updatedAt @map("updated_at")
+  inactivatedAt DateTime? @map("inactivated_at")
+
+  @@map("client")
+}
