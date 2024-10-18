@@ -4,7 +4,7 @@ import { Optional } from '@/core/types/optional'
 
 interface ClientProps {
   name: string
-  email?: string
+  email: string
   phoneNumber?: string
   createdAt: Date
   updatedAt?: Date
@@ -16,7 +16,7 @@ export class Client extends Entity<ClientProps> {
     return this.props.name
   }
 
-  get email(): string | undefined {
+  get email(): string {
     return this.props.email
   }
 
