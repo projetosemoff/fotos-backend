@@ -13,4 +13,17 @@ describe('Create client', () => {
 
     sut = new CreateClientUseCase(inMemoryClientRepository)
   })
+
+  it('should be able to create a new client', async () => {
+    const result = await sut.execute({
+      name: 'Nathan',
+      email: 'teste@gmail.com',
+      phoneNumber: '99999999999',
+    })
+
+    expect(result.isRight()).toBe(true)
+    expect(result.value).toEqual({
+      client: inMemoryClientRepository.items[0],
+    })
+  })
 })

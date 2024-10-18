@@ -1,7 +1,7 @@
 import { left, right, Either } from '@/core/either'
 import { Client } from '../../enterprise/entities/client'
 import { ClientAlreadyExistsError } from '../errors/client-already-exists'
-import { ClienteRepository } from '../repositories/client-repository'
+import { ClientRepository } from '../repositories/client-repository'
 
 interface CreateClientUseCaseRequest {
   name: string
@@ -17,7 +17,7 @@ type CreateClientUseCaseResponse = Either<
 >
 
 export class CreateClientUseCase {
-  constructor(private clientRepository: ClienteRepository) {}
+  constructor(private clientRepository: ClientRepository) {}
 
   async execute({
     name,
