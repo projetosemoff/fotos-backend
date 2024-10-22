@@ -42,7 +42,7 @@ beforeAll(async () => {
 
   await redis.flushdb()
 
-  execSync('pnpm prisma migrate deploy')
+  execSync('npx prisma migrate deploy')
 })
 
 afterAll(async () => {
